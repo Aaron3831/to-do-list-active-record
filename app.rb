@@ -4,6 +4,7 @@ also_reload("lib/**/*.rb")
 require("./lib/task")
 require("./lib/list")
 require("pg")
+require('pry')
 
 DB = PG.connect({:dbname => "to_do"})
 
@@ -25,6 +26,11 @@ post("/lists") do
   list = List.new({:name => name, :id => nil})
   list.save()
   erb(:list_success)
+end
+
+get('/tasks')do
+  @tasks = Task.all()
+  erb(:tasks)
 end
 
 get("/lists/:id") do

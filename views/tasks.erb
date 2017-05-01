@@ -1,0 +1,16 @@
+<h1>Your Current tasks</h1>
+
+<% if @tasks.any?() %>
+  <h3>Here are your lists:</h3>
+
+  <ul>
+    <% @tasks.each() do |task| %>
+      <li><%= task.description() %></a> </li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+    <p>There are no tasks yet!</p>
+
+<% end %>
